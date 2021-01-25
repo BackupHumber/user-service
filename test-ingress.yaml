@@ -1,0 +1,105 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    field.cattle.io/creatorId: user-tlwqr
+    field.cattle.io/ingressState: '{"c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vM3BzKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vY2FtcGFpZ25zKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vY2hhdHMoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vYWxlcnRzKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vYmlsbGluZ3MoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vZ2FtZXMoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vZWRiKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vZXRsKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vbm90aWZpY2F0aW9ucygvfCQpKC4qKS84MA==":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vbmxyYygvfCQpKC4qKS84MA==":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vcGF5bWVudHMoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vcHJvZHVjdHMoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vdHlsc21zKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vdHlsc2ltKC98JCkoLiopLzgw":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vdHlsdXNzZCgvfCQpKC4qKS84MA==":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vdXNlcnMoL3wkKSguKikvODA=":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8vdXNzZGd3L3JvdXRlcigvfCQpKC4qKS84MA==":"","c3RhZ2luZy5waG9lbml4L3N0YWdpbmcvc3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS8veHRyYXdpbigvfCQpKC4qKS84MA==":"","c3RhZ2luZy5waG9lbml4Lmh1bWJlcmdhbWVzLmNvbS50bHMuY3J0":"staging:staging.phoenix.humbergames.com.tls.crt"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:third-party-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/3ps(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:tyl-sms-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/tylsms(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:ussd-gw-router-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/ussdgw/router(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:chat-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/chats(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:billing-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/billings(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:nlrc-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/nlrc(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:tylsim-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/tylsim(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:edb-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/edb(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:gaming-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/games(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:payment-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/payments(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:notification-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/notifications(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:notification-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/alerts(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:tyl-ussd-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/tylussd(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:xtrawin-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/xtrawin(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:user-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/users(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:etl-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/etl(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:campaign-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/campaigns(/|$)(.*)","allNodes":true},{"addresses":["45.153.185.156"],"port":443,"protocol":"HTTPS","serviceName":"staging:product-service","ingressName":"staging:staging.phoenix","hostname":"staging.phoenix.humbergames.com","path":"/products(/|$)(.*)","allNodes":true}]'
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  creationTimestamp: "2020-10-05T13:44:47Z"
+  generation: 5
+  labels:
+    cattle.io/creator: norman
+  name: staging.phoenix
+  namespace: staging
+  resourceVersion: "1812238"
+  selfLink: /apis/extensions/v1beta1/namespaces/staging/ingresses/staging.phoenix
+  uid: 4ba00054-654f-4f48-95ba-6e31275516a7
+spec:
+  rules:
+    - host: staging.phoenix.humbergames.com
+      http:
+        paths:
+          - backend:
+              serviceName: user-service
+              servicePort: 80
+            path: /users(/|$)(.*)
+          - backend:
+              serviceName: gaming-service
+              servicePort: 80
+            path: /games(/|$)(.*)
+          - backend:
+              serviceName: etl-service
+              servicePort: 80
+            path: /etl(/|$)(.*)
+          - backend:
+              serviceName: payment-service
+              servicePort: 80
+            path: /payments(/|$)(.*)
+          - backend:
+              serviceName: billing-service
+              servicePort: 80
+            path: /billings(/|$)(.*)
+          - backend:
+              serviceName: third-party-service
+              servicePort: 80
+            path: /3ps(/|$)(.*)
+          - backend:
+              serviceName: notification-service
+              servicePort: 80
+            path: /notifications(/|$)(.*)
+          - backend:
+              serviceName: campaign-service
+              servicePort: 80
+            path: /campaigns(/|$)(.*)
+          - backend:
+              serviceName: tyl-sms-service
+              servicePort: 80
+            path: /tylsms(/|$)(.*)
+          - backend:
+              serviceName: product-service
+              servicePort: 80
+            path: /products(/|$)(.*)
+          - backend:
+              serviceName: tyl-ussd-service
+              servicePort: 80
+            path: /tylussd(/|$)(.*)
+          - backend:
+              serviceName: edb-service
+              servicePort: 80
+            path: /edb(/|$)(.*)
+          - backend:
+              serviceName: ussd-gw-router-service
+              servicePort: 80
+            path: /ussdgw/router(/|$)(.*)
+          - backend:
+              serviceName: notification-service
+              servicePort: 80
+            path: /alerts(/|$)(.*)
+          - backend:
+              serviceName: nlrc-service
+              servicePort: 80
+            path: /nlrc(/|$)(.*)
+          - backend:
+              serviceName: xtrawin-service
+              servicePort: 80
+            path: /xtrawin(/|$)(.*)
+          - backend:
+              serviceName: tylsim-service
+              servicePort: 80
+            path: /tylsim(/|$)(.*)
+          - backend:
+              serviceName: chat-service
+              servicePort: 80
+            path: /chats(/|$)(.*)
+  tls:
+    - hosts:
+        - staging.phoenix.humbergames.com
+      secretName: staging.phoenix.humbergames.com.tls.crt
+status:
+  loadBalancer:
+    ingress:
+      - ip: 45.153.185.156
+      - ip: 45.153.185.19
+      - ip: 45.153.185.244

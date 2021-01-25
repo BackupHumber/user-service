@@ -1,0 +1,82 @@
+image: atlassian/default-image:2
+
+pipelines:
+  pull-requests:
+    # master:
+    #   - step:
+    #       name: Build and Push Docker Image to Registry
+    #       services:
+    #         - docker
+    #       script:
+    #         - docker login --username $DOCKER_HUB_ID --password $DOCKER_HUB_PASSWORD
+    #         - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+    #         - docker build -t $IMAGE_NAME .
+    #         - docker push $IMAGE_NAME
+            
+    #   - step:
+    #      name: Deploy to Production Cluster
+    #      script:
+    #       - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+    #       - sed -i "s|{{IMAGE}}|$IMAGE_NAME|g" deployment.yml
+    #       - sed -i "s|{{SERVICE_NAME}}|$BITBUCKET_REPO_SLUG|g" deployment.yml
+    #       ### Uncomment the lines below to support ingress ###
+    #       # - sed -i "s|{{HOST}}|$HOST_PRODUCTION|g" deployment.yml
+    #       # - sed -i "s|{{NAMESPACE}}|production|g" deployment.yml
+    #       - pipe: atlassian/kubectl-run:1.2.0
+    #         variables:
+    #           KUBE_CONFIG: $KUBE_CONFIG_PROD # Different from Sandbox/Staging
+    #           KUBECTL_COMMAND: 'apply'
+    #           RESOURCE_PATH: 'deployment.yml'
+    #           KUBECTL_ARGS:
+    #             - '-nyello-star-production'
+
+    # staging:
+    #   - step:
+    #       name: Build and Push Docker Image to Registry
+    #       services:
+    #         - docker
+    #       script:
+    #         - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+    #         - docker login --username $DOCKER_HUB_ID --password $DOCKER_HUB_PASSWORD
+    #         - docker build -t $IMAGE_NAME .
+    #         - docker push $IMAGE_NAME
+            
+    #   - step:
+    #      name: Deploy to Staging
+    #      script:
+    #       - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+    #       - sed -i "s|{{IMAGE}}|$IMAGE_NAME|g" deployment.yml
+    #       - sed -i "s|{{SERVICE_NAME}}|$BITBUCKET_REPO_SLUG|g" deployment.yml
+    #       - pipe: atlassian/kubectl-run:1.2.0
+    #         variables:
+    #           KUBE_CONFIG: $KUBE_CONFIG_STAGING
+    #           KUBECTL_COMMAND: 'apply'
+    #           RESOURCE_PATH: 'deployment.yml'
+    #           KUBECTL_ARGS:
+    #             - '-nstaging'
+
+    sandbox:
+      - step:
+          name: Build and Push Docker Image to Registry
+          services:
+            - docker
+          script:
+            - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+            - docker login --username $DOCKER_HUB_ID --password $DOCKER_HUB_PASSWORD
+            - docker build -t $IMAGE_NAME .
+            - docker push $IMAGE_NAME
+
+
+      - step:
+         name: Deploy to Sandbox
+         script:
+          - export IMAGE_NAME=$IMAGE_REGISTRY_URL/$BITBUCKET_REPO_SLUG:$BITBUCKET_COMMIT
+          - sed -i "s|{{IMAGE}}|$IMAGE_NAME|g" deployment.yml
+          - sed -i "s|{{SERVICE_NAME}}|$BITBUCKET_REPO_SLUG|g" deployment.yml
+          - pipe: atlassian/kubectl-run:1.2.0
+            variables:
+              KUBE_CONFIG: $KUBE_CONFIG_SANDBOX
+              KUBECTL_COMMAND: 'apply'
+              RESOURCE_PATH: 'deployment.yml'
+              KUBECTL_ARGS:
+                - '-nsandbox'

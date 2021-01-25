@@ -1,0 +1,19 @@
+"use strict";
+const { Seeder }  =  require('mongoose-data-seed');
+
+const data = [{
+
+}];
+
+class <%= seederName %>Seeder extends Seeder {
+
+  async shouldRun() {
+      return true;
+  }
+
+  async run() {
+    return Model.create(data);
+  }
+}
+
+module.exports = <%= seederName %>Seeder;

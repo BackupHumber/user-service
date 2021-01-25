@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-algorithm: "least_connections"
+
+spec:
+  selector:
+    app: user-service
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      name: http
+  type: ClusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+
+      containers:
+        - name: user-service
+          image: {{image}}
+          imagePullPolicy: Always
+          env:
+            - name: APP_NAME
+              value: user-service
+          ports:
+            - containerPort: 80
+              protocol: TCP

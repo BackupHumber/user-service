@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Can create user role",
+    "service": "user-service",
+    "group": "auth",
+    "key": "create-role"
+  },
+  {
+    "name": "Can update user roles",
+    "service": "user-service",
+    "group": "auth",
+    "key": "update-role"
+  },
+  {
+    "name": "Can See all users",
+    "service": "user-service",
+    "group": "profile",
+    "key": "fetch-all-users"
+  },
+  {
+    "name": "Can Fetch single user",
+    "service": "user-service",
+    "group": "profile",
+    "key": "fetch-user"
+  },
+  {
+    "name": "Can Update user",
+    "service": "user-service",
+    "group": "profile",
+    "key": "update-user"
+  },
+  {
+    "name": "Can delete user",
+    "service": "user-service",
+    "group": "profile",
+    "key": "delete-user"
+  },
+  {
+    "name": "Can grant/revoke user access",
+    "service": "user-service",
+    "group": "auth",
+    "key": "grant-revoke-user-access"
+  }
+]

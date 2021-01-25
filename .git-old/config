@@ -1,0 +1,21 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = http://bitbucket.org/mobilotto/user-service
+	fetch = +refs/heads/sandbox:refs/remotes/origin/sandbox
+[branch "sandbox"]
+	remote = origin
+	merge = refs/heads/sandbox
+[user]
+	name = bitbucket-pipelines
+	email = commits-noreply@bitbucket.org
+[push]
+	default = current
+[http "http://bitbucket.org/mobilotto/user-service"]
+	proxy = http://localhost:29418/
+[remote "github"]
+	url = git@github.com:Ileriayo/user-service.git
+	fetch = +refs/heads/*:refs/remotes/github/*
